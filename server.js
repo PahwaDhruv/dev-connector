@@ -1,10 +1,15 @@
 const express = require('express')
+const dotenv = require('dotenv').config()
+const cookieParser = require('cookie-parser')
 const connectDB = require('./config/db')
 
 const app = express()
 const PORT = process.env.PORT || 5000;
 connectDB()
 app.use(express.json({extended: false}))
+app.use(cookieParser())
+
+
 app.get('/', (req, res) => {
     return res.send('Hello World')
 })
